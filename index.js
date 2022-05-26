@@ -120,7 +120,7 @@ app.get('/delete/:id', (req, res) => {
 });
 
 
-app.post('/employees', (req, res) => {
+app.post('/posts', (req, res) => {
     let emp = req.body;
     var sql = "SET @id = ?;SET @Name = ?;SET @Country = ?; \
     CALL EmployeeAddOrEdit(@id,@Name,@Country);";
@@ -136,11 +136,11 @@ app.post('/employees', (req, res) => {
 });
 
 
-app.put('/employees', (req, res) => {
+app.put('/posts', (req, res) => {
     let emp = req.body;
     var sql = "SET @id = ?;SET @Name = ?;SET @Country = ?; \
     CALL EmployeeAddOrEdit(@id,@Name,@Country);";
-    mysqlConnection.query(sql, [emp.id, emp.Name, emp.Country], (err, rows, fields) => {
+   db.query(sql, [emp.id, emp.Name, emp.Country], (err, rows, fields) => {
         if (!err)
             res.send('Updated successfully');
         else
